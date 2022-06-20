@@ -16,7 +16,7 @@ public class Main {
 
     public static void chooseDiff() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choose your difficulty: ");
+        System.out.println("Select your difficulty: ");
         System.out.println("Easy/Medium/Hard");
         String diff = scanner.nextLine();
         System.out.println("Choose the theme of the quiz:");
