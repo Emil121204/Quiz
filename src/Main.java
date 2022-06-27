@@ -1,8 +1,11 @@
+import java.util.Random;
 import java.util.Scanner;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int score = 0;
         System.out.println("Choose the quiz's language language/Избери езика на викторината:");
         String language = scanner.nextLine();
         if (language.equals("English") || language.equals("english")) {
@@ -16,19 +19,19 @@ public class Main {
             {
                 switch (theme) {
                     case 1:
-                        playSportQuiz();
+                        playSportQuiz(score);
                         break;
                     case 2:
-                        playHistoryQuiz();
+                        playHistoryQuiz(score);
                         break;
                     case 3:
-                        playVideoGamesQuiz();
+                        playVideoGamesQuiz(score);
                         break;
                     case 4:
-                        playPCHardwareQuiz();
+                        playPCHardwareQuiz(score);
                         break;
                     case 5:
-                        playGeneralKnowledgeQuiz();
+                        playGeneralKnowledgeQuiz(score);
                         break;
                     default:
                         System.out.println("Wrong input, enter a number between 1 and 5!");
@@ -45,19 +48,19 @@ public class Main {
             byte theme = scanner.nextByte();
             switch (theme) {
                 case 1:
-                    playBulgarianSportQuiz();
+                    playBulgarianSportQuiz(score);
                     break;
                 case 2:
-                    playBulgarianHistoryQuiz();
+                    playBulgarianHistoryQuiz(score);
                     break;
                 case 3:
-                    playBulgarianVideoGamesQuiz();
+                    playBulgarianVideoGamesQuiz(score);
                     break;
                 case 4:
-                    playBulgarianPCHardwareQuiz();
+                    playBulgarianPCHardwareQuiz(score);
                     break;
                 case 5:
-                    playBulgarianGeneralKnowledgeQuiz();
+                    playBulgarianGeneralKnowledgeQuiz(score);
                     break;
                 default:
                     System.out.println("Въведена е грешна стойност, моля въведи число от 1 до 5!");
@@ -68,44 +71,69 @@ public class Main {
         }
     }
 
-    public static void playSportQuiz() {
+    public static void playSportQuiz(int score) {
+String correct ="";
+Scanner scanner = new Scanner(System.in);
+String path ="sportEng.csv";
+Scanner read = new Scanner(path);
+read.next();
+String ans = "";
+while(read.hasNext())
+{
+    while(ans.equals(correct)){
+        Random random = new Random();
+        int r = random.nextInt(4);
+        String questions = read.next();
+        String[] question = questions.split(",");
+        correct = question[1];
+        System.out.println(question[0]);
+        Random random1 = new Random();
+        int randomAns = random.nextInt(4);
+        System.out.println(question[1]);
+        System.out.println(question[2]);
+        System.out.println(question[3]);
+        System.out.println(question[4]);
+        ans = scanner.nextLine();
+        score++;
+    }
+    System.out.println("Your score was: "+score+"/10");
+}
+    }
+
+    public static void playHistoryQuiz(int score) {
 
     }
 
-    public static void playHistoryQuiz() {
+    public static void playVideoGamesQuiz(int score) {
 
     }
 
-    public static void playVideoGamesQuiz() {
+    public static void playPCHardwareQuiz(int score) {
 
     }
 
-    public static void playPCHardwareQuiz() {
-
-    }
-
-    public static void playGeneralKnowledgeQuiz() {
+    public static void playGeneralKnowledgeQuiz(int score) {
 
     }
 
     ///////
-    public static void playBulgarianSportQuiz() {
+    public static void playBulgarianSportQuiz(int score) {
 
     }
 
-    public static void playBulgarianHistoryQuiz() {
+    public static void playBulgarianHistoryQuiz(int score) {
 
     }
 
-    public static void playBulgarianPCHardwareQuiz() {
+    public static void playBulgarianPCHardwareQuiz(int score) {
 
     }
 
-    public static void playBulgarianVideoGamesQuiz() {
+    public static void playBulgarianVideoGamesQuiz(int score) {
 
     }
 
-    public static void playBulgarianGeneralKnowledgeQuiz() {
+    public static void playBulgarianGeneralKnowledgeQuiz(int score) {
 
     }
 }
