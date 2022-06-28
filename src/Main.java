@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         int score = 0;
         System.out.println("Choose the quiz's language language/Избери езика на викторината:");
@@ -71,33 +71,53 @@ public class Main {
         }
     }
 
-    public static void playSportQuiz(int score) {
-String correct ="";
-Scanner scanner = new Scanner(System.in);
-String path ="sportEng.csv";
-Scanner read = new Scanner(path);
-read.next();
-String ans = "";
-while(read.hasNext())
-{
-    while(ans.equals(correct)){
-        Random random = new Random();
-        int r = random.nextInt(4);
-        String questions = read.next();
-        String[] question = questions.split(",");
-        correct = question[1];
-        System.out.println(question[0]);
-        Random random1 = new Random();
-        int randomAns = random.nextInt(4);
-        System.out.println(question[1]);
-        System.out.println(question[2]);
-        System.out.println(question[3]);
-        System.out.println(question[4]);
-        ans = scanner.nextLine();
-        score++;
-    }
-    System.out.println("Your score was: "+score+"/10");
-}
+    public static void playSportQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\sportEng.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        String[][] questions = new String[10][5];
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        while (scanner1.hasNextLine()) {
+            do {
+                for (int i = 0; i < 10; i++) {
+                    quiz1 = quiz1.concat(scanner1.nextLine() + "\n");
+                    quiz1.split(",");
+                    for (int j = 0; j < 5; j++) {
+                        questions[i][j] = quiz1;
+                        System.out.println(questions[i][0]);
+                        correct = questions[i][1];
+                        wrong1 = questions[i][2];
+                        wrong2 = questions[i][3];
+                        wrong3 = questions[i][4];
+                        for (int k = 0; k < 4; k++) {
+                            int randomAns = (int) (Math.random() * (4 - 1) + 1);
+                            switch (randomAns) {
+                                case 1:
+                                    System.out.println(correct);
+                                    break;
+                                case 2:
+                                    System.out.println(wrong1);
+                                    break;
+                                case 3:
+                                    System.out.println(wrong2);
+                                    break;
+                                case 4:
+                                    System.out.println(wrong3);
+                                    break;
+                            }
+                        }
+                        answer = scanner.nextLine();
+                    }
+                }
+                score++;
+            } while (answer.equals(correct));
+        }
+        System.out.println("Your score was:" + score + "/10");
     }
 
     public static void playHistoryQuiz(int score) {
