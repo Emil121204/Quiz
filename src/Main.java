@@ -79,43 +79,45 @@ public class Main {
         String wrong2 = "";
         String wrong3 = "";
         String correct = "";
-        String[][] questions = new String[10][5];
         Scanner scanner = new Scanner(System.in);
         String answer = "";
         while (scanner1.hasNextLine()) {
-            do {
-                for (int i = 0; i < 10; i++) {
-                    quiz1 = quiz1.concat(scanner1.nextLine() + "\n");
-                    quiz1.split(",");
-                    for (int j = 0; j < 5; j++) {
-                        questions[i][j] = quiz1;
-                        System.out.println(questions[i][0]);
-                        correct = questions[i][1];
-                        wrong1 = questions[i][2];
-                        wrong2 = questions[i][3];
-                        wrong3 = questions[i][4];
-                        for (int k = 0; k < 4; k++) {
-                            int randomAns = (int) (Math.random() * (4 - 1) + 1);
-                            switch (randomAns) {
-                                case 1:
-                                    System.out.println(correct);
-                                    break;
-                                case 2:
-                                    System.out.println(wrong1);
-                                    break;
-                                case 3:
-                                    System.out.println(wrong2);
-                                    break;
-                                case 4:
-                                    System.out.println(wrong3);
-                                    break;
-                            }
-                        }
-                        answer = scanner.nextLine();
-                    }
-                }
+            for (int i = 0; i < 10; i++) {
+                quiz1 = quiz1 + (scanner1.nextLine());
+            }
+            String[] questions = quiz1.split(",");
+            for (int i = 0; i < 10; i++) {
+                System.out.println(questions[(i * 4) + i]);
+                //     for (int k = 0; k < 4; k++) {
+                //   Random random = new Random();
+                //  int randomAns = random.nextInt(3)+1;
+                correct = questions[(i * 4) + 1 + i];
+                wrong1 = questions[(i * 4) + 2 + i];
+                wrong2 = questions[(i * 4) + 3 + i];
+                wrong3 = questions[(i * 4) + 4 + i];
+                //  switch (randomAns) {
+                //     case 1:
+                //       System.out.println(correct);
+                //          break;
+                //      case 2:
+                //         System.out.println(wrong1);
+                //        break;
+                //     case 3:
+                //         System.out.println(wrong2);
+                //         break;
+                //     case 4:
+                //          System.out.println(wrong3);
+                //          break;
+                //    }
+                System.out.println(correct);
+                System.out.println(wrong1);
+                System.out.println(wrong2);
+                System.out.println(wrong3);
+                answer = scanner.nextLine();
+                if (!(answer.equals(correct))) break;
                 score++;
-            } while (answer.equals(correct));
+                //}
+            }
         }
         System.out.println("Your score was:" + score + "/10");
     }
