@@ -1,6 +1,6 @@
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
+
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
@@ -79,47 +79,61 @@ public class Main {
         String wrong2 = "";
         String wrong3 = "";
         String correct = "";
+        ArrayList<Integer> randomList = new ArrayList<Integer>();
+        ArrayList<Integer> randomList1 = new ArrayList<Integer>();
         Scanner scanner = new Scanner(System.in);
         String answer = "";
-        while (scanner1.hasNextLine()) {
-            for (int i = 0; i < 10; i++) {
-                quiz1 = quiz1 + (scanner1.nextLine());
-            }
-            String[] questions = quiz1.split(",");
-            for (int i = 0; i < 10; i++) {
-                System.out.println(questions[(i * 4) + i]);
-                //     for (int k = 0; k < 4; k++) {
-                //   Random random = new Random();
-                //  int randomAns = random.nextInt(3)+1;
-                correct = questions[(i * 4) + 1 + i];
-                wrong1 = questions[(i * 4) + 2 + i];
-                wrong2 = questions[(i * 4) + 3 + i];
-                wrong3 = questions[(i * 4) + 4 + i];
-                //  switch (randomAns) {
-                //     case 1:
-                //       System.out.println(correct);
-                //          break;
-                //      case 2:
-                //         System.out.println(wrong1);
-                //        break;
-                //     case 3:
-                //         System.out.println(wrong2);
-                //         break;
-                //     case 4:
-                //          System.out.println(wrong3);
-                //          break;
-                //    }
-                System.out.println(correct);
-                System.out.println(wrong1);
-                System.out.println(wrong2);
-                System.out.println(wrong3);
-                answer = scanner.nextLine();
-                if (!(answer.equals(correct))) break;
-                score++;
-                //}
-            }
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
         }
-        System.out.println("Your score was:" + score + "/10");
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        for (int i = 0; i < 10; i++) {
+            int randomNum = random.nextInt(9) + 1;
+            for (int j = 0; j < randomList.size(); j++) {
+              if (randomList.get(j)==randomNum){
+                    randomNum=random.nextInt(9)+1;
+                }
+            }
+            System.out.println(questions[randomNum * 5]);
+            for (int k = 0; k < 4; k++) {
+                int randomNum1 = random.nextInt(3) + 1;
+                for (int j = 0; j < randomList1.size(); j++) {
+                    if (randomList1.get(j)==randomNum1){
+                        randomNum1=random.nextInt(3)+1;
+                    }
+                }
+                correct = questions[(randomNum * 5) + 1];
+                wrong1 = questions[(randomNum * 5) + 2];
+                wrong2 = questions[(randomNum * 5) + 3];
+                wrong3 = questions[(randomNum * 5) + 4];
+                switch (randomNum1) {
+                    case 1:
+                        System.out.println(correct);
+                        randomList1.add(randomNum1);
+                        break;
+                    case 2:
+                        System.out.println(wrong1);
+                        randomList1.add(randomNum1);
+                        break;
+                    case 3:
+                        System.out.println(wrong2);
+                        randomList1.add(randomNum1);
+                        break;
+                    case 4:
+                        System.out.println(wrong3);
+                        randomList1.add(randomNum1);
+                        break;
+                }
+
+            }
+            randomList.add(randomNum);
+            randomList1.clear();
+            answer = scanner.nextLine();
+            if (!(answer.equals(correct))) break;
+            score++;
+        }
+        System.out.println("Good Job! Your score was:" + score + "/10");
     }
 
     public static void playHistoryQuiz(int score) {
@@ -138,7 +152,6 @@ public class Main {
 
     }
 
-    ///////
     public static void playBulgarianSportQuiz(int score) {
 
     }
