@@ -90,86 +90,665 @@ public class Main {
         }
         Random random = new Random();
         String[] questions = quiz1.split(",");
-        for (int i = 0; i < 10; i++) {
-            randomNum = random.nextInt(9) + 1;
-            for (int j = 0; j < questions.length; ) {
-                if (questionArr[randomNum] != -1) {
-                    j--;
-                    randomNum = random.nextInt(10);
-                } else {
-                    System.out.println(questions[(randomNum * 5)]);
-                    questionArr[randomNum] = 69;
-                    j++;
-                    for (int k = 0; k <4; ) {
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
                         randomNum1 = random.nextInt(3);
-                        if((answersList.contains(randomNum1))){
-                            randomNum1 = random.nextInt(3);
-                            k--;
-                        }
+                        k--;
+                    } else {
                         answersList.add(randomNum1);
-                            correct = questions[(randomNum * 5) + 1];
-                            wrong1 = questions[(randomNum * 5) + 2];
-                            wrong2 = questions[(randomNum * 5) + 3];
-                            wrong3 = questions[(randomNum * 5) + 4];
-                            switch (randomNum1) {
-                                case 0:
-                                    System.out.println(correct);
-                                    break;
-                                case 1:
-                                    System.out.println(wrong1);
-                                    break;
-                                case 2:
-                                    System.out.println(wrong2);
-                                    break;
-                                case 3:
-                                    System.out.println(wrong3);
-                                    break;
-                            }
-                            k++;
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
                         }
-                    answer = scanner.nextLine();
-                    score++;
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
                 }
-                answersList.clear();
-                if (!(answer.equals(correct))) break;
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
             }
+            if (!(answer.equals(correct))) {
+                System.out.println("Good Job! Your score was:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
         }
         System.out.println("Good Job! Your score was:" + score + "/10");
     }
 
-    public static void playHistoryQuiz(int score) {
 
+    public static void playHistoryQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\HistoryEng.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Good Job! Your score was:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Good Job! Your score was:" + score + "/10");
     }
 
-    public static void playVideoGamesQuiz(int score) {
-
+    public static void playVideoGamesQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\videoGamesEng.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Good Job! Your score was:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Good Job! Your score was:" + score + "/10");
     }
 
-    public static void playPCHardwareQuiz(int score) {
-
+    public static void playPCHardwareQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\pcHardwareEng.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Good Job! Your score was:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Good Job! Your score was:" + score + "/10");
     }
 
-    public static void playGeneralKnowledgeQuiz(int score) {
-
+    public static void playGeneralKnowledgeQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\generalKnowledgeEng.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Good Job! Your score was:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Good Job! Your score was:" + score + "/10");
     }
 
-    public static void playBulgarianSportQuiz(int score) {
-
+    public static void playBulgarianSportQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\sportBg.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
     }
 
-    public static void playBulgarianHistoryQuiz(int score) {
-
+    public static void playBulgarianHistoryQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\historyBg.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
     }
 
-    public static void playBulgarianPCHardwareQuiz(int score) {
-
+    public static void playBulgarianPCHardwareQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\pcHardwareBg.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
     }
 
-    public static void playBulgarianVideoGamesQuiz(int score) {
-
+    public static void playBulgarianVideoGamesQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\videoGamesBg.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
     }
 
-    public static void playBulgarianGeneralKnowledgeQuiz(int score) {
-
+    public static void playBulgarianGeneralKnowledgeQuiz(int score) throws FileNotFoundException {
+        File quiz = new File("\\Users\\deroc\\Desktop\\proekt\\project\\generalKnowledgeBg.csv");
+        Scanner scanner1 = new Scanner(quiz);
+        String quiz1 = "";
+        String wrong1 = "";
+        String wrong2 = "";
+        String wrong3 = "";
+        String correct = "";
+        Scanner scanner = new Scanner(System.in);
+        String answer = "";
+        int[] questionArr = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+        ArrayList<Integer> answersList = new ArrayList<>();
+        int randomNum = 0;
+        int randomNum1 = 0;
+        for (int i = 0; i < 10; i++) {
+            quiz1 = quiz1 + (scanner1.nextLine());
+        }
+        Random random = new Random();
+        String[] questions = quiz1.split(",");
+        randomNum = random.nextInt(9) + 1;
+        for (int j = 0; j < questions.length; j++) {
+            if (questionArr[randomNum] != -1) {
+                randomNum = random.nextInt(10);
+            } else {
+                System.out.println(questions[(randomNum * 5)]);
+                questionArr[randomNum] = 69;
+                // j++;
+                for (int k = 0; k < 4; ) {
+                    randomNum1 = random.nextInt(4);
+                    if ((answersList.contains(randomNum1))) {
+                        randomNum1 = random.nextInt(3);
+                        k--;
+                    } else {
+                        answersList.add(randomNum1);
+                        correct = questions[(randomNum * 5) + 1];
+                        wrong1 = questions[(randomNum * 5) + 2];
+                        wrong2 = questions[(randomNum * 5) + 3];
+                        wrong3 = questions[(randomNum * 5) + 4];
+                        switch (randomNum1) {
+                            case 0:
+                                System.out.println(correct);
+                                break;
+                            case 1:
+                                System.out.println(wrong1);
+                                break;
+                            case 2:
+                                System.out.println(wrong2);
+                                break;
+                            case 3:
+                                System.out.println(wrong3);
+                                break;
+                        }
+                        k++;
+                    }
+                    if (answersList.size() == 4) break;
+                }
+                answer = scanner.nextLine();
+                if (answer.equals(correct)) score++;
+            }
+            if (!(answer.equals(correct))) {
+                System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
+                System.exit(0);
+            }
+            answersList.clear();
+        }
+        System.out.println("Добра работа! Резултатът ти е:" + score + "/10");
     }
 }
