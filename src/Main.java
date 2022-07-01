@@ -19,28 +19,23 @@ public class Main {
             byte numbTheme = scanner.nextByte();
             switch (numbTheme) {
                 case 1: {
-                    theme=("sportEng.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("sportEng.csv");
                     break;
                 }
                 case 2: {
-                    theme=("HistoryEng.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("HistoryEng.csv");
                     break;
                 }
                 case 3: {
-                    theme=("videoGamesEng.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("videoGamesEng.csv");
                     break;
                 }
                 case 4: {
-                    theme=("pcHardwareEng.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("pcHardwareEng.csv");
                     break;
                 }
                 case 5: {
-                    theme=("generalKnowledgeEng.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("generalKnowledgeEng.csv");
                     break;
                 }
                 default:
@@ -58,28 +53,23 @@ public class Main {
             switch (numbTheme) {
 
                 case 1: {
-                    theme=("sportBg.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("sportBg.csv");
                     break;
                 }
                 case 2: {
-                    theme=("historyBg.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("historyBg.csv");
                     break;
                 }
                 case 3: {
-                    theme=("pcHardwareBg.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("videoGamesBg.csv");
                     break;
                 }
                 case 4: {
-                    theme=("videoGamesBg.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("pcHardwareBg.csv");
                     break;
                 }
                 case 5: {
-                    theme=("generalKnowledgeBg.csv");
-                    playQuiz(score, theme, language);
+                    theme = ("generalKnowledgeBg.csv");
                     break;
                 }
                 default:
@@ -89,6 +79,7 @@ public class Main {
         } else {
             System.out.println("Грешен език!");
         }
+        playQuiz(score, theme, language);
     }
 
     public static void playQuiz(int score, String theme, String language) throws FileNotFoundException {
