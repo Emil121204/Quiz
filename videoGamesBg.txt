@@ -1,6 +1,6 @@
 Кой е създателят на Minecraft сървъра Пакта:,Aethelthryth,Dido_D,HeavenBul,Znaka,
 С кой жанр игри е асоцииран най-често NoThxTv:,Страшни,Екшън,Спортни,Фентъзи,
-Коя от следните игри не е направена от българска компания:,Tzar,Lady Popular,Game Of Emperors,Call Of Duty,
+Коя от следните игри не е направена от българска компания:,Call Of Duty,Lady Popular,Game Of Emperors,Tzar,
 Коя от следните игри е направена със помощта на български програмисти:,Assasin's Creed IV,Minecraft,Team Fortress 2,Fortnite,
 Коя от следните игри не е преведена на български език:Diablo 3,Minecraft,Prey,Football Manager 2011,
 Кой е създателят на компанията за игри Haemimont Games:,Габриел Добрев,Иван Николов,Боян Колев,Кристиян Кирилов,
